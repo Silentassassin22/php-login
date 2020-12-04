@@ -1,16 +1,24 @@
 <?php
 
 session_start();
+if($_SESSION['authed']){header("Location: /");};
 var_dump($_SESSION);
 
 $usernameset = "silentassassin";
 $passwordset = "password";
-$hash = '$2y$10$YB3fRergCoA2enxlPUK6eOap8f26LFcnRIBmLBzQBZRI9VAoQx2.K';
+$hash = '$2y$10$.bjB/XNQ2ZfACiBk8Z23A.KSO9mhGzOgqyVyU700204ag1truSqrW';
 
 if(isset($_POST['username']) and isset($_POST['password'])){
-	var_dump(password_verify($password, $hash));
-	$_SESSION['username'] = $_POST['username'];
-	$_SESSION['authed'] = $_POST['true'];
+	$USERNAME = $_POST['username'];
+	$PASSWORD = $_POST['password'];
+	print("Authed?:".password_verify($PASSWORD, $hash));
+	if(password_verify($PASSWORD, $hash)){
+	    //Logged In!
+        echo "Logged in!";
+        $_SESSION['username'] = $USERNAME;
+        $_SESSION['authed'] = true;
+        header('Location: index.php');
+    }
 }
 
 ?>

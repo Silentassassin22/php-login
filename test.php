@@ -1,6 +1,33 @@
 <?php
-var_dump(password_hash("password", PASSWORD_DEFAULT));
-$password = "$2y$10\$EW3MB4kh5Fh36ndV.BXNHuHT7YNKHH02Vk56swjhYooI360a6EiUi";
-var_dump(password_verify("password", $password));
+session_start();
+var_dump($_POST);
+switch ($_POST['action']) {
+    case '1':
+        $_SESSION["username"] = "silentassassin";
+        $_SESSION["authed"] = true;
+        echo "Logged in!";
+        break;
+    case '0':
+        $_SESSION["username"] = "";
+        $_SESSION["authed"] = false;
+        session_destroy();
+        break;
+}
+/*session_start();
 
-?>
+$_SESSION["username"] = "silentassassin";
+$_SESSION["authed"] = true;
+header("Refresh: 5; url=/");*/
+
+
+/*<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+</head>
+<body>
+    <h1>Logging Out!</h1>
+</body>
+</html>*/
+
+

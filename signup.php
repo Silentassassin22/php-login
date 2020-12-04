@@ -1,4 +1,6 @@
 <?php
+session_start();
+if($_SESSION['authed']){header("Location: /");};
 
 if(isset($_POST['username']) and isset($_POST['password'])){
 	$password = trim($_POST['password']);
