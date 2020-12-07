@@ -1,0 +1,12 @@
+<?php
+return [
+    'database' => [
+        "schema" => "website",
+        "host" => "localhost",
+        "username" => "root",
+        "password" => "password",
+    ],
+    'website' => [
+        "error" => true, //Whether to show errors
+    ],
+];
