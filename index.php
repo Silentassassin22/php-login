@@ -1,6 +1,6 @@
 <?php
+require('classes/misc.class.php');
 session_start();
-
 
 ?>
 
@@ -36,7 +36,7 @@ session_start();
 </head>
 <body>
 	<h1>Super Secure Login Page!</h1>
-	<h1>You are currently logged in as <?=$_SESSION['username']?></h1>
+	<h1><?php if(isset($_SESSION['username'])){echo 'You are currently logged in as '.$misc->clean($_SESSION['username']);}else{echo 'You are not logged in!';}?></h1>
 	<button type="button" onclick="location.href='login.php'" id="login">Login</button>
 	<button type="button" onclick="location.href='signup.php'" id="signup">Signup</button>
     <button type="button" class="debug" onclick="login(0)" id="logout">Logout</button>

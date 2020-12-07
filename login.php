@@ -1,5 +1,5 @@
 <?php
-
+require('init.php');
 session_start();
 if($_SESSION['authed']){header("Location: /");};
 var_dump($_SESSION);
